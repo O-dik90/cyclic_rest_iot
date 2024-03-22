@@ -1,20 +1,30 @@
+require('dotenv').config();
 
-const { MongoClient } = require('mongodb');
-const express = require('express');
-const app = express();
+const express = require('express')
+const mongoose = require('mongoose')
+
+const app = express()
 const PORT = process.env.PORT || 3000
 
-const uri = process.env.MONGO_CONNECTION_STRING;
-const client = new MongoClient(uri);
+mongoose.set('strictQuery', false);
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+}
 
+//Routes go here
 app.all('*', (req,res) => {
   res.json({"every thing":"is awesome"})
 })
 
-client.connect(err => {
-    if(err){ console.error(err); return false;}
-    // connection to mongo is successful, listen for requests
-    app.listen(PORT, () => {
-        console.log("listening for requests");
-    })
-});
+//Connect to the database before listening
+connectDB().then(() => {
+  app.listen(PORT, () => {
+      console.log("listening for requests");
+  })
+})
