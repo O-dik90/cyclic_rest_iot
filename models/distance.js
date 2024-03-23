@@ -1,19 +1,19 @@
 const mongoose = require("mongoose")
 
 const Schema = mongoose.Schema
-const distanceSchema = new Schema({
-  description: {
-    type: string,
-    require: false
-  },
+const DistanceSchema = new Schema({
   distance: {
-    type: string,
+    type: String,
     require: false
   },
   mou: {
-    type: string,
+    type: String,
     require: false
-  }
+  },
+  description: {
+    type: String,
+    require: false
+  },
 })
 
-module.exports = mongoose('distance', distance)
+module.exports = mongoose.model('distance', DistanceSchema)
