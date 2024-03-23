@@ -4,6 +4,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 
 const Dist = require("./models/distance")
+const Relay = require("./models/relay")
+const Temp = require("./models/temperature")
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -33,10 +35,10 @@ app.all('/*', (req, res, next) => {
 
 //Routes go here
 app.all('/', (req, res) => {
-  res.json({ "every thing": "is awesome" })
+  res.json({ "message": "Welcome to IOT Rest API" })
 })
 
-app.post('/add-dist', async (req, res) => {
+app.post('/dist-add', async (req, res) => {
   try {
     const dist = await Dist.create(req.body)
     res.status(200).json({ message: "success add new distance!", value: dist })
@@ -45,17 +47,20 @@ app.post('/add-dist', async (req, res) => {
   }
 })
 
-app.get('/get-dist', async (req, res) => {
-  const dist = await Dist.find()
+app.get('/dist-get', async (req, res) => {
+  try {
+    const dist = await Dist.find()
 
-  if (dist) {
+    if (!dist) {
+      res.status(500).json({ message: "data not found" })
+    }
     res.status(200).json(dist)
-  } else {
-    res.status(500).json({ message: "error" })
+  } catch (error) {
+    res.status(500).json({ message: error.message })
   }
 })
 
-app.get('/getItem-dist/:id', async (req, res) => {
+app.get('/dist-getItem/:id', async (req, res) => {
   try {
     const id = { _id: req.params.id }
     const dist = await Dist.findOne(id)
@@ -67,16 +72,16 @@ app.get('/getItem-dist/:id', async (req, res) => {
 
 })
 
-app.put('/putItem-dist/:id', async (req, res) => {
+app.put('/dist-putItem/:id', async (req, res) => {
   try {
     const id = { _id: req.params.id }
     const params = {
-      "distance": req.body.distance, 
-      "mou": req.body.mou, 
+      "distance": req.body.distance,
+      "mou": req.body.mou,
       "description": req.body.description
     }
 
-    const dist = await Dist.findByIdAndUpdate(id, params, {new : true})
+    const dist = await Dist.findByIdAndUpdate(id, params, { new: true })
 
     if (!dist) {
       res.status(502).json({ message: "data not found" })
@@ -87,20 +92,39 @@ app.put('/putItem-dist/:id', async (req, res) => {
   }
 })
 
-app.delete('/deleteItem-dist/:id', async (req, res) => {
+app.delete('/dist-deleteItem/:id', async (req, res) => {
   try {
     const id = { _id: req.params.id }
     const dist = await Dist.findByIdAndDelete(id)
-    
+
     if (!dist) {
       res.status(502).json({ message: "data not found" })
     }
-    res.status(200).json({ message : "success delete item"})
+    res.status(200).json({ message: "success delete item" })
   } catch (error) {
-    res.json(500).json({ message: error.message})
+    res.json(500).json({ message: error.message })
   }
 })
 
+
+app.post('/relay-add', async (req, res) => {
+  try {
+    const rel = await Relay.create(req.body)
+    res.status(200).json({ message: "success add new relay", value: rel })
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+
+app.post('/temp-add', async (req, res) => {
+  try {
+    const temp = await Temp.create(req.body)
+    res.status(200).json({ message: "success add new data temperature", value: temp })
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
 
 //Connect to the database before listening
 connectDB().then(() => {
