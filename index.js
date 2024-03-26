@@ -43,7 +43,7 @@ app.all('/', (req, res) => {
 app.post('/dist-add', async (req, res) => {
   try {
     const dist = await Dist.create(req.body)
-    res.status(200).json({ message: "success add new distance!", value: dist })
+    res.status(200).json({ message: "success", value: dist })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -56,25 +56,25 @@ app.get('/dist-get', async (req, res) => {
     if (!dist) {
       res.status(200).json({ message: "data not found" })
     }
-    res.status(201).json(dist)
+    res.status(201).json({ message: "success", value: dist })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
 })
 
-app.get('/dist-getItem/:id', async (req, res) => {
+app.get('/dist-get/:id', async (req, res) => {
   try {
     const id = { _id: req.params.id }
     const dist = await Dist.findOne(id)
 
-    res.status(200).json(dist)
+    res.status(200).json({ message: "success", value: dist })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
 
 })
 
-app.put('/dist-putItem/:id', async (req, res) => {
+app.put('/dist-update/:id', async (req, res) => {
   try {
     const id = { _id: req.params.id }
     const params = {
@@ -94,7 +94,7 @@ app.put('/dist-putItem/:id', async (req, res) => {
   }
 })
 
-app.delete('/dist-deleteItem/:id', async (req, res) => {
+app.delete('/dist-delete/:id', async (req, res) => {
   try {
     const id = { _id: req.params.id }
     const dist = await Dist.findByIdAndDelete(id)
@@ -109,16 +109,16 @@ app.delete('/dist-deleteItem/:id', async (req, res) => {
 })
 
 //** Routing Relay */
-app.post('/relay-add', async (req, res) => {
+app.post('/rel-add', async (req, res) => {
   try {
     const rel = await Relay.create(req.body)
-    res.status(201).json({ message: "success add new relay", value: rel })
+    res.status(201).json({ message: "success", value: rel })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
 })
 
-app.get('/relay-get', async (req, res) => {
+app.get('/rel-get', async (req, res) => {
   try {
     const rel = await Relay.find()
 
@@ -140,13 +140,13 @@ app.get('/rel-get/:id', async (req, res) => {
     if (!rel) {
       res.status(202).json({ message: "data not found" })
     }
-    res.status(200).json(rel)
+    res.status(200).json({ message: "success", value: rel })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
 })
 
-app.put('/rel-get/:id', async (req, res) => {
+app.put('/rel-update/:id', async (req, res) => {
   const id = { _id: req.params.id }
   const params = {
     "name": req.body.name,
@@ -169,9 +169,9 @@ app.put('/rel-get/:id', async (req, res) => {
 app.delete('/rel-delete/:id', async (req, res) => {
   try {
     const id = { _id: req.params.id }
-    const dist = await Relay.findByIdAndDelete(id)
+    const rel = await Relay.findByIdAndDelete(id)
 
-    if (!dist) {
+    if (!rel) {
       res.status(202).json({ message: "data not found" })
     }
     res.status(200).json({ message: "success delete item" })
@@ -185,7 +185,7 @@ app.delete('/rel-delete/:id', async (req, res) => {
 app.post('/temp-add', async (req, res) => {
   try {
     const temp = await Temp.create(req.body)
-    res.status(200).json({ message: "success add new data temperature", value: temp })
+    res.status(200).json({ message: "success", value: temp })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -219,7 +219,7 @@ app.get('/temp-get/:id', async (req, res) => {
   }
 })
 
-app.put('/temp-get/:id', async (req, res) => {
+app.put('/temp-update/:id', async (req, res) => {
   const id = { _id: req.params.id }
   const params = {
     "temp": req.body.temp,
@@ -234,8 +234,8 @@ app.put('/temp-get/:id', async (req, res) => {
   try {
     const temp = await Temp.findByIdAndUpdate(id, params, {new: true})
 
-    if (!rel) {
-      res.status(202).json({ message: "data not found" })
+    if (!temp) {
+      temp.status(202).json({ message: "data not found" })
     }
     res.status(200).json(temp)
   } catch (error) {
