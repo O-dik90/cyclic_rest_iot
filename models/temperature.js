@@ -10,7 +10,7 @@ const TemperatureSchema = new Schema({
     type: String,
     require: false
   },
-  humidity: {
+  hum: {
     type: String,
     require: false
   },
