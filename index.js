@@ -88,7 +88,7 @@ app.put('/dist-update/:id', async (req, res) => {
     if (!dist) {
       res.status(202).json({ message: "data not found" })
     }
-    res.status(200).json(dist)
+    res.status(200).json({ message: "success update item", value: dist })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -151,16 +151,16 @@ app.put('/rel-update/:id', async (req, res) => {
   const params = {
     "name": req.body.name,
     "status": req.body.status,
-    "description" : req.body.description
+    "description": req.body.description
   }
 
   try {
-    const rel = await Relay.findByIdAndUpdate(id, params, {new: true})
+    const rel = await Relay.findByIdAndUpdate(id, params, { new: true })
 
     if (!rel) {
       res.status(202).json({ message: "data not found" })
     }
-    res.status(200).json(rel)
+    res.status(200).json({ message: "success update item", value: rel })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -206,7 +206,7 @@ app.get('/temp-get', async (req, res) => {
 
 app.get('/temp-get/:id', async (req, res) => {
   const id = { _id: req.params.id }
-  
+
   try {
     const temp = await Temp.findById(id)
 
@@ -228,16 +228,16 @@ app.put('/temp-update/:id', async (req, res) => {
     "hum_unit": req.body.hum_unit,
     "ph": req.body.ph,
     "ph_unit": req.body.ph_unit,
-    "description" : req.body.description
+    "description": req.body.description
   }
 
   try {
-    const temp = await Temp.findByIdAndUpdate(id, params, {new: true})
+    const temp = await Temp.findByIdAndUpdate(id, params, { new: true })
 
     if (!temp) {
       temp.status(202).json({ message: "data not found" })
     }
-    res.status(200).json(temp)
+    res.status(200).json({ message: "success update item", value: temp })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
