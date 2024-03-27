@@ -67,7 +67,7 @@ app.get('/dist-get/:id', async (req, res) => {
     const id = { _id: req.params.id }
     const dist = await Dist.findOne(id)
 
-    res.status(200).json({ message: "success", value: dist })
+    res.status(200).json(dist)
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -88,7 +88,7 @@ app.put('/dist-update/:id', async (req, res) => {
     if (!dist) {
       res.status(202).json({ message: "data not found" })
     }
-    res.status(200).json({ message: "success update item", value: dist })
+    res.status(200).json(dist)
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -140,7 +140,7 @@ app.get('/rel-get/:id', async (req, res) => {
     if (!rel) {
       res.status(202).json({ message: "data not found" })
     }
-    res.status(200).json({ message: "success", value: rel })
+    res.status(200).json(rel)
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -160,7 +160,7 @@ app.put('/rel-update/:id', async (req, res) => {
     if (!rel) {
       res.status(202).json({ message: "data not found" })
     }
-    res.status(200).json({ message: "success update item", value: rel })
+    res.status(200).json(rel)
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -213,7 +213,7 @@ app.get('/temp-get/:id', async (req, res) => {
     if (!temp) {
       res.status(202).json({ message: "data not found!" })
     }
-    res.status(200).json({ message: "success", value: temp })
+    res.status(200).json(temp)
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -237,7 +237,7 @@ app.put('/temp-update/:id', async (req, res) => {
     if (!temp) {
       temp.status(202).json({ message: "data not found" })
     }
-    res.status(200).json({ message: "success update item", value: temp })
+    res.status(200).json(temp)
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -249,9 +249,9 @@ app.delete('/temp-delete/:id', async (req, res) => {
     const temp = await Temp.findByIdAndDelete(id)
 
     if (!temp) {
-      res.status(202).json({ message: "data not found" })
+      res.status(200).json({ message: "data not found" })
     }
-    res.status(200).json({ message: "success delete item" })
+    res.status(202).json({ message: "success delete item" })
   } catch (error) {
     res.json(500).json({ message: error.message })
   }
