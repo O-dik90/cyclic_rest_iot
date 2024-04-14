@@ -151,7 +151,13 @@ app.put('/rel-update/:id', async (req, res) => {
   const params = {
     "name": req.body.name,
     "status": req.body.status,
-    "description": req.body.description
+    "description": req.body.description,
+    "load_1": req.body.load_1,
+    "load_2": req.body.load_2,
+    "load_3": req.body.load_3,
+    "time_1" : req.body.time_1,
+    "time_2" : req.body.time_2,
+    "time_3" : req.body.time_3,
   }
 
   try {
