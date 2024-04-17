@@ -43,7 +43,7 @@ app.all('/', (req, res) => {
 app.post('/dist-add', async (req, res) => {
   try {
     const dist = await Dist.create(req.body)
-    res.status(200).json({ message: "success add new distance" })
+    res.status(201).json({ message: "success add new distance" })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -56,7 +56,7 @@ app.get('/dist-get', async (req, res) => {
     if (!dist) {
       res.status(200).json({ message: "data not found" })
     }
-    res.status(201).json(dist)
+    res.status(200).json(dist)
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -86,7 +86,7 @@ app.put('/dist-update/:id', async (req, res) => {
     const dist = await Dist.findByIdAndUpdate(id, params, { new: true })
 
     if (!dist) {
-      res.status(202).json({ message: "data not found" })
+      res.status(200).json({ message: "data not found" })
     }
     res.status(200).json(dist)
   } catch (error) {
@@ -123,7 +123,7 @@ app.get('/rel-get', async (req, res) => {
     const rel = await Relay.find()
 
     if (!rel) {
-      res.status(202).json({ message: "data not found!" })
+      res.status(200).json({ message: "data not found!" })
     }
     res.status(200).json(rel)
   } catch (error) {
@@ -138,7 +138,7 @@ app.get('/rel-get/:id', async (req, res) => {
     const rel = await Relay.findById(id)
 
     if (!rel) {
-      res.status(202).json({ message: "data not found" })
+      res.status(200).json({ message: "data not found" })
     }
     res.status(200).json(rel)
   } catch (error) {
@@ -164,7 +164,7 @@ app.put('/rel-update/:id', async (req, res) => {
     const rel = await Relay.findByIdAndUpdate(id, params, { new: true })
 
     if (!rel) {
-      res.status(202).json({ message: "data not found" })
+      res.status(200).json({ message: "data not found" })
     }
     res.status(200).json(rel)
   } catch (error) {
@@ -191,7 +191,7 @@ app.delete('/rel-delete/:id', async (req, res) => {
 app.post('/temp-add', async (req, res) => {
   try {
     const temp = await Temp.create(req.body)
-    res.status(200).json({ message: "success add new temperature"})
+    res.status(201).json({ message: "success add new temperature"})
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -202,7 +202,7 @@ app.get('/temp-get', async (req, res) => {
     const temp = await Temp.find()
 
     if (!temp) {
-      res.status(202).json({ message: "data not found!" })
+      res.status(200).json({ message: "data not found!" })
     }
     res.status(200).json(temp)
   } catch (error) {
@@ -217,7 +217,7 @@ app.get('/temp-get/:id', async (req, res) => {
     const temp = await Temp.findById(id)
 
     if (!temp) {
-      res.status(202).json({ message: "data not found!" })
+      res.status(200).json({ message: "data not found!" })
     }
     res.status(200).json(temp)
   } catch (error) {
@@ -241,7 +241,7 @@ app.put('/temp-update/:id', async (req, res) => {
     const temp = await Temp.findByIdAndUpdate(id, params, { new: true })
 
     if (!temp) {
-      temp.status(202).json({ message: "data not found" })
+      temp.status(200).json({ message: "data not found" })
     }
     res.status(200).json(temp)
   } catch (error) {
@@ -255,9 +255,9 @@ app.delete('/temp-delete/:id', async (req, res) => {
     const temp = await Temp.findByIdAndDelete(id)
 
     if (!temp) {
-      res.status(200).json({ message: "data not found" })
+      res.status(202).json({ message: "data not found" })
     }
-    res.status(202).json({ message: "success delete item" })
+    res.status(200).json({ message: "success delete item" })
   } catch (error) {
     res.json(500).json({ message: error.message })
   }
