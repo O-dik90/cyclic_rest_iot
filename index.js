@@ -112,7 +112,7 @@ app.delete('/dist-delete/:id', async (req, res) => {
 app.post('/rel-add', async (req, res) => {
   try {
     const rel = await Relay.create(req.body)
-    res.status(201).json({ message: "success add new relay"})
+    res.status(201).json({ message: "success add new relay" })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -155,9 +155,11 @@ app.put('/rel-update/:id', async (req, res) => {
     "load_1": req.body.load_1,
     "load_2": req.body.load_2,
     "load_3": req.body.load_3,
-    "time_1" : req.body.time_1,
-    "time_2" : req.body.time_2,
-    "time_3" : req.body.time_3,
+    "load_4": req.body.load_4,
+    "time_1": req.body.time_1,
+    "time_2": req.body.time_2,
+    "time_3": req.body.time_3,
+    "sync": req.body.sync
   }
 
   try {
@@ -191,7 +193,7 @@ app.delete('/rel-delete/:id', async (req, res) => {
 app.post('/temp-add', async (req, res) => {
   try {
     const temp = await Temp.create(req.body)
-    res.status(201).json({ message: "success add new temperature"})
+    res.status(201).json({ message: "success add new temperature" })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }

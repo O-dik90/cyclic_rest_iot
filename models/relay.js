@@ -10,6 +10,10 @@ const RelaySchema = new Schema({
     type: Boolean,
     require: true
   },
+  sync: {
+    type: Boolean,
+    require: false
+  },
   description: {
     type: String,
     require: false
@@ -23,6 +27,10 @@ const RelaySchema = new Schema({
     require: false
   },
   load_3: {
+    type: String,
+    require: false
+  },
+  load_4: {
     type: String,
     require: false
   },
