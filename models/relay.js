@@ -35,15 +35,15 @@ const RelaySchema = new Schema({
     require: false
   },
   time_1: {
-    type: Date,
+    type: String,
     require: false
   },
   time_2: {
-    type: Date,
+    type: String,
     require: false
   },
   time_3: {
-    type: Date,
+    type: String,
     require: false
   },
 })
