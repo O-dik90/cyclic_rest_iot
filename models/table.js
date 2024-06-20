@@ -11,4 +11,4 @@ const TableSchema = new Schema({
   phone: { type: String, require: false }
 })
 
-module.exports = mongoose.module('table', TableSchema)
+module.exports = mongoose.model('table', TableSchema)
