@@ -1,11 +1,12 @@
 require('dotenv').config();
 
-const express = require('express')
-const mongoose = require('mongoose')
+const express = require('express');
+const mongoose = require('mongoose');
 
-const Dist = require("./models/distance")
-const Relay = require("./models/relay")
+const Dist = require("./models/distance");
+const Relay = require("./models/relay");
 const Temp = require("./models/temperature");
+const Table = require("./models/table");
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -264,6 +265,22 @@ app.delete('/temp-delete/:id', async (req, res) => {
     res.json(500).json({ message: error.message })
   }
 })
+
+
+//** Routing Table */
+app.get('/table-get', async( _, res) => {
+  try {
+    const table = await Table.find()
+    
+    if (!table) {
+      res.status(200).json({message: "data not found"})
+    }
+    res.status(200).json(table)
+  } catch (error) {
+    res.status(500).json({message: error.message})
+  }
+})
+
 
 //Connect to the database before listening
 connectDB().then(() => {
