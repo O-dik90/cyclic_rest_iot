@@ -1,0 +1,14 @@
+_id: env_3de87e6b190c49b193b1c1ed3fef17cb
+type: Environment
+parentId: env_aa94915a12484ff2becbedf4aba0dea7
+modified: 1718896778239
+created: 1711487862732
+name: IOT_URL
+data:
+  base_url: https://cyclic-rest-iot.onrender.com
+dataPropertyOrder:
+  "&":
+    - base_url
+color: null
+isPrivate: false
+metaSortKey: 1711487862732

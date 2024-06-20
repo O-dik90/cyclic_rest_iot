@@ -1,0 +1,25 @@
+_id: req_8fdc0e372ef442f1ba9b0a5126c3ba01
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1711489223563
+created: 1711488097425
+url: "{{ _.base_url }}/dist-get"
+name: dist-get
+description: ""
+method: GET
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: 0
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

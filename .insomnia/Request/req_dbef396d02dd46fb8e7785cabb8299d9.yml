@@ -1,0 +1,21 @@
+_id: req_dbef396d02dd46fb8e7785cabb8299d9
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1718896851674
+created: 1711488430327
+url: "{{ _.base_url }}/dist-get/65fe1a57879f8f30d93ecc97"
+name: dist-get
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: 100
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

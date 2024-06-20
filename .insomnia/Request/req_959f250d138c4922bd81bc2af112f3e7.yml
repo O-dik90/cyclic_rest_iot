@@ -1,0 +1,30 @@
+_id: req_959f250d138c4922bd81bc2af112f3e7
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1711489059691
+created: 1711488835943
+url: "{{ _.base_url }}/dist-add"
+name: dist-add
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"distance": "17.0",
+    	"mou": "mm",
+    	"description" : "create new distance"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: 300
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

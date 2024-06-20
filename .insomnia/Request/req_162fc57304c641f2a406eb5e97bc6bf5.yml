@@ -1,0 +1,21 @@
+_id: req_162fc57304c641f2a406eb5e97bc6bf5
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1711489076008
+created: 1711488949644
+url: "{{ _.base_url }}/dist-deleteItem/66033fe2cd36b8dd426d12e9"
+name: dist-delete
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: 400
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

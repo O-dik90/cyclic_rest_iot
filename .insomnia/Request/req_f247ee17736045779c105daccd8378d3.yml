@@ -1,0 +1,34 @@
+_id: req_f247ee17736045779c105daccd8378d3
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1711490327120
+created: 1711490115676
+url: "{{ _.base_url }}/temp-add"
+name: temp-add
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"temp" : "27.5",
+    	"temp_unit": "C",
+    	"humidity" : "24.5",
+    	"hum_unit": "-",
+    	"ph" : "7.2",
+    	"ph_unit": "ph",
+    	"description": "create new temperature"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: 700
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

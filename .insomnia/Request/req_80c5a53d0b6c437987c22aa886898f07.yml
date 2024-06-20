@@ -1,0 +1,34 @@
+_id: req_80c5a53d0b6c437987c22aa886898f07
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1711490570909
+created: 1711490380827
+url: "{{ _.base_url }}/temp-get/660344e5ccbda706e053fbd0"
+name: temp-update/id
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"temp" : "27.5",
+    	"temp_unit": "C",
+    	"humidity" : "24.5",
+    	"hum_unit": "-",
+    	"ph" : "7.2",
+    	"ph_unit": "ph",
+    	"description": "update new temperature"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: 800
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

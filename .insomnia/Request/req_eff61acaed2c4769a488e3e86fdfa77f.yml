@@ -1,0 +1,25 @@
+_id: req_eff61acaed2c4769a488e3e86fdfa77f
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1711490074612
+created: 1711490050812
+url: "{{ _.base_url }}/rel-delete/660343e9ccbda706e053fbca"
+name: relay-delete/id
+description: ""
+method: DELETE
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: 650
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

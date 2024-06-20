@@ -1,0 +1,25 @@
+_id: req_9b04ccbc3f6e4e5895c1e09396d84e6a
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1711489382905
+created: 1711489352109
+url: "{{ _.base_url }}/rel-get/6603410169bdae33c35a3247"
+name: relay-get/id
+description: ""
+method: GET
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: 550
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

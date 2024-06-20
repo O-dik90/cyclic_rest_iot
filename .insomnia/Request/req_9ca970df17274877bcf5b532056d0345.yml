@@ -1,0 +1,25 @@
+_id: req_9ca970df17274877bcf5b532056d0345
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1711490626099
+created: 1711490617488
+url: "{{ _.base_url }}/temp-get/660344e5ccbda706e053fbd0"
+name: temp-get/id
+description: ""
+method: GET
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: 775
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

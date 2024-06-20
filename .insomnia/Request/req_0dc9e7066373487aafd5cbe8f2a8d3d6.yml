@@ -1,0 +1,30 @@
+_id: req_0dc9e7066373487aafd5cbe8f2a8d3d6
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1718896858877
+created: 1711488711065
+url: "{{ _.base_url }}/dist-put/65fe1a57879f8f30d93ecc97"
+name: dist-putItem
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"distance": "20.0",
+    	"mou": "mm",
+    	"description" : "test update my distance"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: 200
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

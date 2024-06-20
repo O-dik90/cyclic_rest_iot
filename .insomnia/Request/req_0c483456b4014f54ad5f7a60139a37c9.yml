@@ -1,0 +1,30 @@
+_id: req_0c483456b4014f54ad5f7a60139a37c9
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1711490022184
+created: 1711489213120
+url: "{{ _.base_url }}/relay-add"
+name: relay-add
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name" : "rel_2",
+    	"status": false,
+    	"description": "create new relay"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: 450
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

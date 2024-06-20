@@ -1,0 +1,30 @@
+_id: req_f9d4634b488a4ac29404254e053054f6
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1711490008007
+created: 1711489888724
+url: "{{ _.base_url }}/rel-get/6603410169bdae33c35a3247"
+name: relay-update/id
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name" : "rel_1",
+    	"status": true,
+    	"description": "test update relay"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: 600
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

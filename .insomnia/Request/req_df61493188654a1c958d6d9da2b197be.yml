@@ -1,0 +1,25 @@
+_id: req_df61493188654a1c958d6d9da2b197be
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1711490721666
+created: 1711490646066
+url: "{{ _.base_url }}/temp-delete/660344e726f4e49fe7b6f523"
+name: temp-delete/id
+description: ""
+method: DELETE
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: 850
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
