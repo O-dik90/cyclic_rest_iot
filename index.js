@@ -43,7 +43,7 @@ app.all('/', (req, res) => {
 //** Routing Distance */
 app.post('/dist-add', async (req, res) => {
   try {
-    const dist = await Dist.create(req.body)
+    await Dist.create(req.body)
     res.status(201).json({ message: "success add new distance" })
   } catch (error) {
     res.status(500).json({ message: error.message })
@@ -112,7 +112,7 @@ app.delete('/dist-delete/:id', async (req, res) => {
 //** Routing Relay */
 app.post('/rel-add', async (req, res) => {
   try {
-    const rel = await Relay.create(req.body)
+    await Relay.create(req.body)
     res.status(201).json({ message: "success add new relay" })
   } catch (error) {
     res.status(500).json({ message: error.message })
@@ -193,7 +193,7 @@ app.delete('/rel-delete/:id', async (req, res) => {
 //** Routing Temperature */
 app.post('/temp-add', async (req, res) => {
   try {
-    const temp = await Temp.create(req.body)
+    await Temp.create(req.body)
     res.status(201).json({ message: "success add new temperature" })
   } catch (error) {
     res.status(500).json({ message: error.message })
@@ -281,6 +281,28 @@ app.get('/table-get', async( _, res) => {
   }
 })
 
+app.post('/table-add', async (req, res) => {
+  try {
+    await Table.create(req.body)
+    res.status(201).json({ message: "success add new data" })
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+app.delete('/table-delete/:id', async (req, res) => {
+  try {
+    const id = { _id: req.params.id }
+    const table = await Table.findByIdAndDelete(id)
+
+    if (!table) {
+      res.status(202).json({ message: "data not found" })
+    }
+    res.status(200).json({ message: "success delete item" })
+  } catch (error) {
+    res.json(500).json({ message: error.message })
+  }
+})
 
 //Connect to the database before listening
 connectDB().then(() => {
