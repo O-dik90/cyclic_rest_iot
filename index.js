@@ -2,20 +2,28 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs')
+const session = require('express-session');
+const mongoDbSession = require('connect-mongodb-session')(session)
 
 const Dist = require("./models/distance");
 const Relay = require("./models/relay");
 const Temp = require("./models/temperature");
 const Table = require("./models/table");
+const User = require("./models/user");
 
-const app = express()
-const PORT = process.env.PORT || 3000
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+const URI = "mongodb+srv://IOT_Admin:IOT_Admin90@iot.hvl8gvs.mongodb.net/?retryWrites=true&w=majority&appName=iot"
 
 mongoose.set('strictQuery', false);
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
+    const conn = await mongoose.connect(process.env.MONGO_URI || URI, {
+      serverSelectionTimeoutMS: 5000
+      // useNewUrlParser: true,
       // useUnifieldTopology: true
     });
     console.log(`MongoDB Connected: ${conn.connection.host}`);
@@ -25,7 +33,24 @@ const connectDB = async () => {
   }
 }
 
+const storeDB = new mongoDbSession({
+  uri: URI,
+  collection: "sessions"
+})
+
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(session({
+  secret: 'key sceret for sign cookie',
+  resave: false,
+  saveUninitialized: false,
+  store: storeDB
+}
+))
+
+
 app.all('/*', (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
@@ -37,6 +62,9 @@ app.all('/*', (req, res, next) => {
 //Routes go here
 //**  */
 app.all('/', (req, res) => {
+  // req.session.isAuth = true;
+  console.log(req.session);
+  console.log(req.session.id);
   res.json({ "message": "Welcome to IOT Rest API" })
 })
 
@@ -189,7 +217,6 @@ app.delete('/rel-delete/:id', async (req, res) => {
   }
 })
 
-
 //** Routing Temperature */
 app.post('/temp-add', async (req, res) => {
   try {
@@ -266,7 +293,6 @@ app.delete('/temp-delete/:id', async (req, res) => {
   }
 })
 
-
 //** Routing Table */
 app.get('/table-get', async (_, res) => {
   try {
@@ -328,9 +354,67 @@ app.put('/table-update/:id', async (req, res) => {
   }
 })
 
+app.post("/register", async (req, res) => {
+  const { username, email, password } = req.body;
+
+  let user = await User.findOne({ email });
+
+  if (user) {
+    return res.redirect("/register");
+  }
+
+  const hashPassword = await bcrypt.hash(password, 8);
+  
+  user = new User({
+    username, 
+    email, 
+    password: hashPassword
+  })
+  
+  await user.save();
+  return res.status(201).json({message: "success create"})
+})
+
+app.post("/login", async (req, res) => {
+  const {email, password} = req.body;
+
+  const user = await User.findOne({email});
+  
+  if (!user){
+    return res.status(203).json({message: "not auth"});
+  }
+  
+  const isMatch = await bcrypt.compare(password, user.password);
+  
+  if (!isMatch) {
+    return res.status(202).json({message: "not match"})
+  }
+  
+  return res.status(200).json({message: "OK"})
+})
+
+const isAuth = (req, res, next) => {
+  if (req.session.isAuth) {
+    next();
+  } else {
+    res.redirect("/login");
+  }
+}
+
+app.get("/new", isAuth, (req, res) => {
+  res.status(202).json({message: "auth"})
+})
+
+
 //Connect to the database before listening
+//? For Deployment
 connectDB().then(() => {
   app.listen(PORT, () => {
     console.log("listening for requests");
+    console.log(`Server listening on ${PORT} ...`)
   })
 })
+
+// app.listen(PORT, () => {
+//   console.log(`Server listening on ${PORT} ...`)
+// })
