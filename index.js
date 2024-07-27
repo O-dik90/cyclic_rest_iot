@@ -2,16 +2,8 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
-const session = require('express-session');
-const mongoDbSession = require('connect-mongodb-session')(session)
 const authRouter = require('./routes/authRoute')
-
-const Dist = require("./models/distance");
-const Relay = require("./models/relay");
-const Temp = require("./models/temperature");
-const Table = require("./models/table");
-
-
+const cors = require('cors')
 
 const app = express();
 
@@ -35,28 +27,7 @@ app.set("view engine", "ejs");
 //** Middleware */
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-//** Sessions */
-const storeDB = new mongoDbSession({
-  uri: process.env.MONGO_URI,
-  collection: "sessions"
-})
-
-
-app.use(session({
-  secret: 'key sceret for sign cookie',
-  resave: false,
-  saveUninitialized: false,
-  store: storeDB
-}
-))
-
-app.all('/*', (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, PUT, PATCH, POST, DELETE");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use(cors());
 
 //**  */
 app.all('/', (req, res) => {
