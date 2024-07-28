@@ -5,10 +5,11 @@ const createError = require("../utils/appError");
 const jwt = require("jsonwebtoken")
 
 const User = require("../models/user");
-
 const secretKey = process.env.JWT_SECRET_KEY;
+
 const registerUser = async(req, res, next) => {
   try {
+    console.log(secretKey)
     const {email, username, password} = req.body;
     
     const user = await User.findOne({email})

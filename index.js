@@ -25,13 +25,14 @@ const connectDB = async () => {
 app.set("view engine", "ejs");
 
 //** Middleware */
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
 //**  */
 app.all('/', (req, res) => {
   res.json({ "message": "Welcome to Rest API" })
+  console.log(process.env.JWT_SECRET_KEY)
 })
 
 app.use('/api/auth', authRouter);
