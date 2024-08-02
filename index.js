@@ -4,6 +4,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const authRouter = require('./routes/authRoute')
 const cors = require('cors')
+const session = require('express-session');
+const passport = require('passport');
 
 const app = express();
 
@@ -28,6 +30,13 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
+app.use(session({
+  secret: process.env.JWT_SECRET_KEY,
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 //**  */
 app.all('/', (req, res) => {

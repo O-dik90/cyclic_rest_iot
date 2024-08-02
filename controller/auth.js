@@ -9,7 +9,6 @@ const secretKey = process.env.JWT_SECRET_KEY;
 
 const registerUser = async(req, res, next) => {
   try {
-    console.log(secretKey)
     const {email, username, password} = req.body;
     
     const user = await User.findOne({email})
@@ -23,13 +22,8 @@ const registerUser = async(req, res, next) => {
       password: hashPass
     })
 
-    const token = jwt.sign({_id: newUser._id}, secretKey, {
-      expiresIn: '1d'
-    })
     res.status(201).json({
-      status: 'success',
-      messsage: 'User registered successfully',
-      token,
+      messsage: 'success',
       user: {
         _id: newUser._id,
         username: newUser.username,
@@ -54,12 +48,11 @@ const loginUser = async(req, res, next) => {
       return next(new createError("Incorrect email or password!", 401));
 
     const token = jwt.sign({_id: user._id}, secretKey, {
-      expiresIn: '1d'
+      expiresIn: '1h'
     })
 
     res.status(200).json({
-      status: 'success',
-      message: 'Logged is successfully',
+      message: 'success',
       token,
       user: {
         _id: user._id,
