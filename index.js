@@ -7,6 +7,8 @@ const cors = require('cors')
 const session = require('express-session');
 const passport = require('passport');
 
+const cookieParser = require('cookie-parser');
+
 const app = express();
 
 mongoose.set('strictQuery', false);
@@ -30,6 +32,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 app.use(session({
   secret: process.env.JWT_SECRET_KEY,
   resave: false,
@@ -41,7 +44,7 @@ app.use(passport.session());
 //**  */
 app.all('/', (req, res) => {
   res.json({ "message": "Welcome to Rest API" })
-  console.log(process.env.JWT_SECRET_KEY)
+  console.log('Cookies: ', req.cookies);
 })
 
 app.use('/api/auth', authRouter);

@@ -7,14 +7,14 @@ const jwt = require("jsonwebtoken")
 const User = require("../models/user");
 const secretKey = process.env.JWT_SECRET_KEY;
 
-const registerUser = async(req, res, next) => {
+const registerUser = async (req, res, next) => {
   try {
-    const {email, username, password} = req.body;
-    
-    const user = await User.findOne({email})
+    const { email, username, password } = req.body;
+
+    const user = await User.findOne({ email })
     if (user)
       return next(new createError("User already exist!", 400))
-    
+
     const hashPass = await bcrypt.hash(password, 12);
     const newUser = await User.create({
       email,
@@ -35,25 +35,32 @@ const registerUser = async(req, res, next) => {
   }
 }
 
-const loginUser = async(req, res, next) => {
+const loginUser = async (req, res, next) => {
   try {
-    const {email, password} = req.body;
-    
-    const user = await User.findOne({email});   
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
     if (!user)
       return next(new createError("User not found!", 404))
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if(!isMatch)
+    if (!isMatch)
       return next(new createError("Incorrect email or password!", 401));
 
-    const token = jwt.sign({_id: user._id}, secretKey, {
+    const token = jwt.sign({ _id: user._id }, secretKey, {
       expiresIn: '1h'
+    })
+
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV !== 'development', // Use secure cookies in production
+      sameSite: 'strict', // Prevent CSRF attacks
+      maxAge: 1 * 1 * 60 * 60 * 1000, // 30 days
     })
 
     res.status(200).json({
       message: 'success',
-      token,
+      token: `Bearer ${token}`,
       user: {
         _id: user._id,
         username: user.username,
@@ -65,7 +72,25 @@ const loginUser = async(req, res, next) => {
   }
 }
 
+const logoutUser = (req, res) => {
+  res.cookie('token', '', {
+    httpOnly: true,
+    expires: new Date(0),
+  });
+  res.status(200).json({ message: 'success' });
+};
+
+const currentUser = (req, res, next) => {
+  try {
+    res.status(200).json({ message: 'success' });
+  } catch (error) {
+    next(error)
+  }
+};
+
 module.exports = {
   registerUser,
-  loginUser
+  loginUser,
+  logoutUser,
+  currentUser
 }
