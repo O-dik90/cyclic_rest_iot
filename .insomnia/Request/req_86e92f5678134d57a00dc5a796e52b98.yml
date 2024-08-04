@@ -1,0 +1,30 @@
+_id: req_86e92f5678134d57a00dc5a796e52b98
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1722769047460
+created: 1721320641102
+url: https://cyclic-rest-iot.onrender.com//api/auth/register
+name: register
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"username": "yuy",
+    	"email": "yuy@email.com",
+    	"password": "password123"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1721320641102
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

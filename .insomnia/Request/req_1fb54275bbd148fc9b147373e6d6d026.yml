@@ -1,0 +1,35 @@
+_id: req_1fb54275bbd148fc9b147373e6d6d026
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1721051039541
+created: 1721050865060
+url: "{{ _.base_url }}/table-update/6693a368e5522cc0bffee050"
+name: table-update
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+        "first_name": "odik",
+        "date": "2024-06-26T17:00:00.000Z",
+        "email": "odik@email.com",
+        "last_name": "nugroho",
+        "phone": "08154738223",
+        "role": "admin",
+        "status": true,
+        "web": "odik.com"
+      }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1721050865060
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

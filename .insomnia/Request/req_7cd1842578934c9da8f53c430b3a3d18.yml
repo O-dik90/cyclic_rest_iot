@@ -1,0 +1,35 @@
+_id: req_7cd1842578934c9da8f53c430b3a3d18
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1720934666985
+created: 1719147311846
+url: "{{ _.base_url }}/table-add"
+name: table-add
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    		"first_name": "rendi",
+    		"date": "2024-06-21T17:00:00.000Z",
+    		"email": "rendi@email.com",
+    		"last_name": "wahyu",
+    		"phone": "871233458238",
+    		"role": "user",
+    		"status": true,
+    		"web": "agengfitri.com"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1719147311846
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

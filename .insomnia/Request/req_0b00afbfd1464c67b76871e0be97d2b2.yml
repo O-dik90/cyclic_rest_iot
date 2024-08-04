@@ -1,0 +1,31 @@
+_id: req_0b00afbfd1464c67b76871e0be97d2b2
+type: Request
+parentId: wrk_beb3ef0569c04251b3279559d44ae274
+modified: 1722769055214
+created: 1722057621309
+url: https://cyclic-rest-iot.onrender.com/api/auth/logout
+name: Logout
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_49b563574e0343f68d8e21863d45a988
+  - id: pair_44a4095743e74d8fa7ad66c690f8847d
+    name: Authorization
+    value: Bearer
+      eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmFjZmZhNjkxOWJjMjIxMWYzMjNiYjUiLCJpYXQiOjE3MjI2MTM2ODAsImV4cCI6MTcyMjYxNzI4MH0._H08LfmGzq3k1XKjIXX6JdkD62KlXtY0Y84U_fSHMRI
+    description: ""
+authentication: {}
+metaSortKey: -1722057621309
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
