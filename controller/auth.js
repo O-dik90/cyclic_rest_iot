@@ -55,7 +55,7 @@ const loginUser = async (req, res, next) => {
       httpOnly: true,
       secure: process.env.NODE_ENV !== 'development', // Use secure cookies in production
       sameSite: 'strict', // Prevent CSRF attacks
-      maxAge: 1 * 1 * 60 * 60 * 1000, // 30 days
+      maxAge: 1 * 1 * 60 * 60 * 1000, // 1hours
     })
 
     res.status(200).json({
