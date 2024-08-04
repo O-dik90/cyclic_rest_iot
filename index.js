@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const authRouter = require('./routes/authRoute')
+const tableRouter = require('./routes/tableRoute')
 const cors = require('cors')
 const session = require('express-session');
 const passport = require('passport');
@@ -48,6 +49,7 @@ app.all('/', (req, res) => {
 })
 
 app.use('/api/auth', authRouter);
+app.use('/api',tableRouter);
 
 //** Global Error Handler */
 app.use((err, req, res, next) => {
@@ -64,6 +66,6 @@ app.use((err, req, res, next) => {
 connectDB().then(() => {
   app.listen(process.env.PORT, () => {
     console.log("listening for requests");
-    console.log(`Server listening on ${process.env.PORT} ...`)
+    console.log(`Server listening on localhost:${process.env.PORT} ...`)
   })
 })
