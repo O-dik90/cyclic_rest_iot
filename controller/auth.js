@@ -60,7 +60,7 @@ const loginUser = async (req, res, next) => {
 
     res.status(200).json({
       message: 'success',
-      token: `Bearer ${token}`,
+      token,
       user: {
         _id: user._id,
         username: user.username,
