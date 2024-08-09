@@ -7,6 +7,7 @@ const tableRouter = require('./routes/tableRoute')
 const cors = require('cors')
 const session = require('express-session');
 const passport = require('passport');
+const helmet = require('helmet')
 
 const cookieParser = require('cookie-parser');
 
@@ -33,6 +34,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
+app.use(helmet.noSniff());
 app.use(cookieParser());
 app.use(session({
   secret: process.env.JWT_SECRET_KEY,
@@ -57,7 +59,6 @@ app.use((err, req, res, next) => {
   err.status = err.status || 'error';
   
   res.status(err.statusCode).json({
-    status: err.status,
     message: err.message
   })
 })
