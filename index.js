@@ -34,7 +34,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
-app.use(helmet.noSniff());
+app.use(helmet());
 app.use(cookieParser());
 app.use(session({
   secret: process.env.JWT_SECRET_KEY,

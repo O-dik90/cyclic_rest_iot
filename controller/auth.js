@@ -2,32 +2,42 @@ require('dotenv').config();
 
 const bcrypt = require("bcryptjs/dist/bcrypt");
 const createError = require("../utils/appError");
-const jwt = require("jsonwebtoken")
 
 const User = require("../models/user");
-const secretKey = process.env.JWT_SECRET_KEY;
+const generate = require('../utils/generatingCode');
+const { sendVerifEmail } = require('../email/mail');
+
 
 const registerUser = async (req, res, next) => {
   try {
     const { email, username, password } = req.body;
+    if (!email || !username || !password)
+      return next(new User.create("All field are required"))
 
     const user = await User.findOne({ email })
     if (user)
       return next(new createError("User already exist!"))
 
     const hashPass = await bcrypt.hash(password, 12);
-    const newUser = await User.create({
+    const verificationToken = generate.VerifToken();
+    const newUser = new User({
       email,
       username,
-      password: hashPass
+      password: hashPass,
+      verificationToken,
+      verificationTokenExpiresAt: Date.now() + 3 * 60 * 60 * 1000 //3hours
     })
 
+    await sendVerifEmail(email, verificationToken);
+    await newUser.save();
+    
+    generate.TokenSetCookie(res, newUser._id);
+    
     res.status(201).json({
       messsage: 'success',
       user: {
-        _id: newUser._id,
-        username: newUser.username,
-        email: newUser.email
+        ...newUser._doc,
+        password: undefined
       }
     })
   } catch (error) {
@@ -47,16 +57,7 @@ const loginUser = async (req, res, next) => {
     if (!isMatch)
       return next(new createError("Incorrect email or password!", 401));
 
-    const token = jwt.sign({ _id: user._id }, secretKey, {
-      expiresIn: '1h'
-    })
-
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV !== 'development', // Use secure cookies in production
-      sameSite: 'strict', // Prevent CSRF attacks
-      maxAge: 1 * 1 * 60 * 60 * 1000, // 1hours
-    })
+    generate.TokenSetCookie(res, newUser._id);
 
     res.status(200).json({
       message: 'success',
