@@ -1,10 +1,10 @@
 _id: req_0b00afbfd1464c67b76871e0be97d2b2
 type: Request
 parentId: wrk_beb3ef0569c04251b3279559d44ae274
-modified: 1722769055214
+modified: 1725729163918
 created: 1722057621309
-url: https://cyclic-rest-iot.onrender.com/api/auth/logout
-name: Logout
+url: "{{ _.base_url }}/api/auth/logout"
+name: logout
 description: ""
 method: POST
 body:

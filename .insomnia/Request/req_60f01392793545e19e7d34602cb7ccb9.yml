@@ -1,16 +1,19 @@
 _id: req_60f01392793545e19e7d34602cb7ccb9
 type: Request
 parentId: wrk_beb3ef0569c04251b3279559d44ae274
-modified: 1720935639627
+modified: 1723220767441
 created: 1719147677727
-url: "{{ _.base_url }}/table-delete/669363a0e6471ab06abae037"
+url: "{{ _.local_url }}/api/table-delete/6697d769857fdf7975a6b37c"
 name: table-delete
 description: ""
 method: DELETE
 body: {}
 parameters: []
 headers: []
-authentication: {}
+authentication:
+  type: bearer
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmFjZmZhNjkxOWJjMjIxMWYzMjNiYjUiLCJpYXQiOjE3MjMyMjAyODQsImV4cCI6MTcyMzIyMzg4NH0.F5kXF9xI2RvBNCrJvPog-l_LwvRnmmXmmysPF54gMl0
+  prefix: Bearer
 metaSortKey: -1719147677727
 isPrivate: false
 settingStoreCookies: true

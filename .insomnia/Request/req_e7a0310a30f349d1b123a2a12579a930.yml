@@ -1,26 +1,24 @@
-_id: req_86e92f5678134d57a00dc5a796e52b98
+_id: req_e7a0310a30f349d1b123a2a12579a930
 type: Request
 parentId: wrk_beb3ef0569c04251b3279559d44ae274
-modified: 1725697732315
-created: 1721320641102
-url: "{{ _.local_url }}/api/auth/register"
-name: register
+modified: 1725733588621
+created: 1725730705038
+url: "{{ _.local_url }}/api/auth/forgot-password"
+name: forgot-password
 description: ""
 method: POST
 body:
   mimeType: application/json
   text: |-
     {
-    	"username": "odik",
-    	"email": "odikyudi69@gmail.com",
-    	"password": "password123"
+    	"email" : "odikyudi69@gmail.com"
     }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
 authentication: {}
-metaSortKey: -1721320641102
+metaSortKey: -1721118309070.5
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

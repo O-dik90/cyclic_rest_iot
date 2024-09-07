@@ -1,9 +1,9 @@
 _id: req_1fb54275bbd148fc9b147373e6d6d026
 type: Request
 parentId: wrk_beb3ef0569c04251b3279559d44ae274
-modified: 1721051039541
+modified: 1723220992662
 created: 1721050865060
-url: "{{ _.base_url }}/table-update/6693a368e5522cc0bffee050"
+url: "{{ _.local_url }}/api/table-update/66b642fb916214f46d794a1a"
 name: table-update
 description: ""
 method: PUT
@@ -24,7 +24,10 @@ parameters: []
 headers:
   - name: Content-Type
     value: application/json
-authentication: {}
+authentication:
+  type: bearer
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmFjZmZhNjkxOWJjMjIxMWYzMjNiYjUiLCJpYXQiOjE3MjMyMjAyODQsImV4cCI6MTcyMzIyMzg4NH0.F5kXF9xI2RvBNCrJvPog-l_LwvRnmmXmmysPF54gMl0
+  prefix: Bearer
 metaSortKey: -1721050865060
 isPrivate: false
 settingStoreCookies: true

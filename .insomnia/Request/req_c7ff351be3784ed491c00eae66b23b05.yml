@@ -1,26 +1,26 @@
-_id: req_86e92f5678134d57a00dc5a796e52b98
+_id: req_c7ff351be3784ed491c00eae66b23b05
 type: Request
 parentId: wrk_beb3ef0569c04251b3279559d44ae274
-modified: 1725697732315
-created: 1721320641102
-url: "{{ _.local_url }}/api/auth/register"
-name: register
+modified: 1725734284190
+created: 1725733575622
+url: "{{ _.local_url
+  }}/api/auth/reset-password/d77ae6fb6764a2b5c071659b7ff50e5ed2164938"
+name: reset-password/id
 description: ""
 method: POST
 body:
   mimeType: application/json
   text: |-
     {
-    	"username": "odik",
     	"email": "odikyudi69@gmail.com",
-    	"password": "password123"
+    	"password" : "mypassword123"
     }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
 authentication: {}
-metaSortKey: -1721320641102
+metaSortKey: -1721084587065.25
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

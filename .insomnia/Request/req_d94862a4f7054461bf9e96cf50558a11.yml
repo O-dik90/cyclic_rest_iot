@@ -1,16 +1,19 @@
 _id: req_d94862a4f7054461bf9e96cf50558a11
 type: Request
 parentId: wrk_beb3ef0569c04251b3279559d44ae274
-modified: 1718897870005
+modified: 1723220375107
 created: 1718896261727
-url: "{{ _.base_url }}/table-get"
+url: localhost:3001/api/table-get
 name: table-get
 description: ""
 method: GET
 body: {}
 parameters: []
 headers: []
-authentication: {}
+authentication:
+  type: bearer
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmFjZmZhNjkxOWJjMjIxMWYzMjNiYjUiLCJpYXQiOjE3MjMyMjAyODQsImV4cCI6MTcyMzIyMzg4NH0.F5kXF9xI2RvBNCrJvPog-l_LwvRnmmXmmysPF54gMl0
+  prefix: Bearer
 metaSortKey: -1718896261727
 isPrivate: false
 settingStoreCookies: true

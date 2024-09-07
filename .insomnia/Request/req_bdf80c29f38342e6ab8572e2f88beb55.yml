@@ -1,10 +1,10 @@
 _id: req_bdf80c29f38342e6ab8572e2f88beb55
 type: Request
 parentId: wrk_beb3ef0569c04251b3279559d44ae274
-modified: 1722769029670
+modified: 1725729155850
 created: 1721321335216
 url: "{{ _.base_url }}/api/auth/login"
-name: Login
+name: login
 description: ""
 method: POST
 body:

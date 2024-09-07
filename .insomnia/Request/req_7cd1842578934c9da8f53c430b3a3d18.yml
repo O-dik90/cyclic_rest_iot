@@ -1,9 +1,9 @@
 _id: req_7cd1842578934c9da8f53c430b3a3d18
 type: Request
 parentId: wrk_beb3ef0569c04251b3279559d44ae274
-modified: 1720934666985
+modified: 1723220521220
 created: 1719147311846
-url: "{{ _.base_url }}/table-add"
+url: "{{ _.local_url }}/api/table-add"
 name: table-add
 description: ""
 method: POST
@@ -24,7 +24,10 @@ parameters: []
 headers:
   - name: Content-Type
     value: application/json
-authentication: {}
+authentication:
+  type: bearer
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmFjZmZhNjkxOWJjMjIxMWYzMjNiYjUiLCJpYXQiOjE3MjMyMjAyODQsImV4cCI6MTcyMzIyMzg4NH0.F5kXF9xI2RvBNCrJvPog-l_LwvRnmmXmmysPF54gMl0
+  prefix: Bearer
 metaSortKey: -1719147311846
 isPrivate: false
 settingStoreCookies: true
