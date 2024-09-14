@@ -1,7 +1,7 @@
 const { VERIFICATION_EMAIL_TEMPLATE, PASSWORD_RESET_REQUEST_TEMPLATE, PASSWORD_RESET_SUCCESS_TEMPLATE } = require("./mailTemplate");
 const { mailClient, sender } = require("./mailtrap.config");
 
-const sendVerifEmail = async (mailRecipient, verifToken) => {
+const sendVerifEmail = async (mailRecipient, verifToken, next) => {
   try {
     const res = await mailClient.sendMail({
       from: sender,
@@ -13,7 +13,7 @@ const sendVerifEmail = async (mailRecipient, verifToken) => {
     console.log("email sent successfully", res)
   } catch (error) {
     console.error("error:", error);
-    next(new createError(`${error}`, 400));
+    next(error);
   }
 }
 

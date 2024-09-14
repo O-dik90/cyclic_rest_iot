@@ -54,7 +54,7 @@ app.use('/api/auth', authRouter);
 app.use('/api',tableRouter);
 
 //** Global Error Handler */
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
   
@@ -62,6 +62,8 @@ app.use((err, req, res, next) => {
     message: err.message
   })
 })
+
+
 
 //Connect to the database before listening
 connectDB().then(() => {

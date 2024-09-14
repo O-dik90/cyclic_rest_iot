@@ -28,7 +28,8 @@ const registerUser = async (req, res, next) => {
       verificationTokenExpiresAt: Date.now() + 3 * 60 * 60 * 1000 //3hours
     })
 
-    await sendVerifEmail(newUser.email, verificationToken);
+    // active if real production
+    // await sendVerifEmail(newUser.email, verificationToken, next);
     await newUser.save();
 
     generate.TokenSetCookie(res, newUser._id);
@@ -57,7 +58,7 @@ const loginUser = async (req, res, next) => {
     if (!isMatch)
       return next(new createError("Incorrect email or password!", 401));
 
-    generate.TokenSetCookie(res, user._id);
+    const token = generate.TokenSetCookie(res, user._id);
 
     user.lastLogin = new Date();
     await user.save();
