@@ -6,9 +6,9 @@ const passport = require('../utils/passport-jwt');
 const router = express.Router();
 const protect = passport.authenticate('jwt', { session: false });
 
-router.get('/table-get', protect,tableController.tableGet)
-router.post('/table-add', protect,tableController.tableAdd)
-router.delete('/table-delete/:id', protect,tableController.tableDelete)
-router.put('/table-update/:id', protect,tableController.tableUpdate)
+router.get('/table-get', protect,tableController.tablesGet)
+router.post('/table-add', protect,tableController.tablesAdd)
+router.delete('/table-delete/:id', protect,tableController.tablesDelete)
+router.put('/table-update/:id', protect,tableController.tablesUpdate)
 
 module.exports = router;

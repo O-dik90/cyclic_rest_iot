@@ -1,6 +1,6 @@
 const Table = require("../models/table");
 
-const tableGet = async (_, res) => {
+const tablesGet = async (_, res) => {
   try {
     const table = await Table.find()
 
@@ -13,7 +13,7 @@ const tableGet = async (_, res) => {
   }
 }
 
-const tableAdd = async (req, res) => {
+const tablesAdd = async (req, res) => {
   try {
     await Table.create(req.body)
     res.status(201).json({ message: "success add new data" })
@@ -22,7 +22,7 @@ const tableAdd = async (req, res) => {
   }
 }
 
-const tableDelete = async (req, res) => {
+const tablesDelete = async (req, res) => {
   try {
     const id = { _id: req.params.id }
     const table = await Table.findByIdAndDelete(id)
@@ -36,7 +36,7 @@ const tableDelete = async (req, res) => {
   }
 }
 
-const tableUpdate = async (req, res) => {
+const tablesUpdate = async (req, res) => {
   const id = { _id: req.params.id }
   const params = {
     "first_name": req.body.first_name,
@@ -61,8 +61,8 @@ const tableUpdate = async (req, res) => {
 }
 
 module.exports = {
-  tableGet,
-  tableAdd,
-  tableDelete,
-  tableUpdate
+  tablesGet,
+  tablesAdd,
+  tablesDelete,
+  tablesUpdate
 }

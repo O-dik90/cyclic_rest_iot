@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const authRouter = require('./routes/authRoute')
 const tableRouter = require('./routes/tableRoute')
+const filesRouter = require('./routes/fileRoute')
 const cors = require('cors')
 const session = require('express-session');
 const passport = require('passport');
@@ -45,6 +46,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 //** initializing*/
 app.all('/', (req, res) => {
   res.json({ "message": "Welcome to Rest API" })
@@ -54,6 +56,7 @@ app.all('/', (req, res) => {
 //** routing */
 app.use('/api/auth', authRouter);
 app.use('/api', tableRouter);
+app.use('/api', filesRouter);
 
 //** global error handler */
 app.use((err, req, res, next) => {
